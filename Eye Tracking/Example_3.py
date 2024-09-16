@@ -36,6 +36,7 @@ def detect_eyes(img, cascade):
     width = np.size(img, 1)  # get face frame width
     height = np.size(img, 0)  # get face frame height
     for (x, y, w, h) in eyes:
+        cv2.rectangle(frame, (x:x+w, y:y+h), (x+w, y+h), (0, 255, 0), 2)
         if y > height / 2:
             pass
         eyecenter = x + w / 2  # get the eye center

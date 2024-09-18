@@ -51,7 +51,7 @@ def blob_process(img, threshold, detector):
     img = cv2.erode(img, None, iterations=2)#idea is exactly like soil erosion. erodes away boundaries of foreground object
     img = cv2.dilate(img, None, iterations=4)#commonly used with erosion (for noise removal in images) because erode also shrinks the object so this makes it larger again 
     img = cv2.medianBlur(img, 5)#takes the median values of each pixel and replaces the central element with this value
-    keypoints = detector.detect(img)#blob detection look at example on laptop
+    keypoints = detector.detect(img)#blob detection 
     print(keypoints)
     return keypoints
 

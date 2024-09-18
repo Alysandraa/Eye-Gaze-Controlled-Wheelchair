@@ -1,3 +1,6 @@
+#this one was mainly working but it was finding 2 sets of eyes and rerawing the shapes mutliple ties which then messed up the rerun of the program
+#also wasn't drawing pupil contours
+
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt

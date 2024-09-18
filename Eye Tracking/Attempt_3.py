@@ -1,3 +1,4 @@
+#Working code - what I tried to build on for next part
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -50,10 +51,11 @@ def nothing(x):
     pass
 
 #theory about why it draws it 100 times is that it gets written over again and again and again cause first two functions just returns frame - i was right but it was because the line defiuning it was not also in the while ture loop
-frame  = cv2.imread("face.jpg") 
+
 cv2.namedWindow('Eye Tracking')
 cv2.createTrackbar('threshold', 'Eye Tracking', 0, 255, nothing)
 while True:
+    frame  = cv2.imread("face.jpg") 
     #ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = find_face(gray, frame)

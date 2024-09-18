@@ -12,8 +12,8 @@ detector_params.maxArea = 1500
 detector = cv2.SimpleBlobDetector_create(detector_params)
 
 #cap = cv2.VideoCapture(0)
-def find_face(gray, img):
-    coords = (cv2.CascadeClassifier('haarcascade_frontalface_default.xml')).detectMultiScale(gray, 1.3, 5)
+def find_face(cascade, gray, img):
+    coords = cascade.detectMultiScale(gray, 1.3, 5)
     #looking for the largest rectangle
     if len(coords) > 1:
         biggest = (0, 0, 0, 0)
@@ -58,7 +58,7 @@ while True:
     #ret, frame = cap.read() 
     frame  = cv2.imread("face.jpg") 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = find_face(gray, frame)
+    faces = find_face(face_cascade, gray, frame)
     if faces is not None:
         eyes = find_eyes(eye_cascade, gray, frame)
         for eye in eyes:

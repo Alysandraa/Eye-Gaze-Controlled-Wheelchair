@@ -53,8 +53,9 @@ def find_pupils(frame, threshold, detector):
 def nothing(x):
     pass
 
+frame  = cv2.imread("face.jpg")
+
 while True:
-    frame  = cv2.imread("face.jpg")
     #ret, frame = cap.read() 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.namedWindow('image')

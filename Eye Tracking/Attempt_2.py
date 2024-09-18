@@ -31,7 +31,7 @@ def find_face(gray, img, frame):
     for (x, y, w, h) in biggest:
        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
        frame = img[y:y + h, x:x + w]
-       
+       #this is the one that was drawing the wrong set of rectangles for the eyes
        eyes_frame = find_eyes(eye_cascade, gray, frame)
     return eyes_frame, frame
 

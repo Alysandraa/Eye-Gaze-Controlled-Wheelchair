@@ -50,8 +50,6 @@ def find_pupils(img, gray, threshold, detector):
 def nothing(x):
     pass
 
-#theory about why it draws it 100 times is that it gets written over again and again and again cause first two functions just returns frame - i was right but it was because the line defiuning it was not also in the while ture loop
-
 cv2.namedWindow('Eye Tracking')
 cv2.createTrackbar('threshold', 'Eye Tracking', 0, 255, nothing)
 while True:

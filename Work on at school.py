@@ -97,7 +97,22 @@ def nothing(x):
     pass
 
 def postion(left, right, one, left_eye, right_eye, one_eye):
-    
+    if sum(left, right, one) != 0:
+        if one == 0:
+            #check the left pupil is inside left eye and right pupil is inside right eye
+            #then find the difference of center coordinates to get osition
+            #then average???? the differences for each eye to get a more reliable result?
+        else:
+            if((one_eye[2]) <= (one[0]) <= (one_eye[3])):
+                #then blah
+             if((left_eye[2]) <= (one[0]) <= (left_eye[3])):
+                 #then blah
+             if((right_eye[2]) <= (one[0]) <= (right_eye[3])): # or do i need to write as ((one[0] >= (right_eye[2])) && (one[0] <= (right_eye[3]))):
+                 #then blah
+    else:
+        position = 0
+        print ("no keypoints")
+    return position
   
 cv2.namedWindow('Eye Tracking')
 cv2.createTrackbar('threshold', 'Eye Tracking', 0, 255, nothing)

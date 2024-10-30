@@ -33,32 +33,13 @@ def find_face(cascade, gray, img):
 
 def find_eyes(cascade, gray, frame):
     eyes = cascade.detectMultiScale(gray)
+    eye_info = []
     for (x, y, w, h) in eyes:
         x2 = x+w
         y2 = y+h
         cv2.rectangle(frame, (x, y), (x2, y2), (0, 255, 0), 2)
-        eye_centre = (((x+x2)/2), ((y+y2)/2), x, x2)
-    if len(eye_centre) == 2 or 4 or 8: #don't know how it will read yet
-        eyeA = eye_centre[0] # or (eye_centre[0], eye_centre[1])
-        eyeB = eye_centre[1] # or (eye_centre[2], eye_centre[3])
-        #dependng on formatting might need a couple lines here to seperate x and y as different items in list
-        if ((int(eyeB[0])) - (int(eyeA[0]))) <= 0:
-          left_eye = eyeB
-          right_eye = eyeA
-          one_eye = 0
-        else:
-          left_eye = eyeA
-          right_eye = eyeB
-          one_eye = 0
-    elif len(eye_centre) == 1 or 2 or 4:
-        left_eye = 0
-        right_eye = 0
-        one_eye = eye_centre
-    else:
-        left_eye = 0
-        right_eye = 0
-        one_eye = 0
-    return frame, left_eye, right_eye, one_eye
+        eye_info = (((x+x2)/2), ((y+y2)/2), x, x2)
+    return frame, eye_info
 
 def find_pupils(img, gray, threshold, detector):
     _, img = cv2.threshold(gray, threshold, 255, cv2.THRESH_BINARY)
@@ -96,9 +77,11 @@ def find_pupils(img, gray, threshold, detector):
 def nothing(x):
     pass
 
-def postion(left, right, one, left_eye, right_eye, one_eye):
+def postion(left, right, one, eye_info):
     if sum(left, right, one) != 0:
+        #do i use one or both eyes?
         if one == 0:
+            
             #check the left pupil is inside left eye and right pupil is inside right eye
             #then find the difference of center coordinates to get osition
             #then average???? the differences for each eye to get a more reliable result?

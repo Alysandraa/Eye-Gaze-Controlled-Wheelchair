@@ -17,7 +17,6 @@ detector = cv2.SimpleBlobDetector_create(detector_params)
 #cap = cv2.VideoCapture(0)
 def find_face(cascade, gray, img):
     coords = cascade.detectMultiScale(gray, 1.3, 5)
-    #looking for the largest rectangle
     if len(coords) > 1:
         biggest = (0, 0, 0, 0)
         for i in coords:

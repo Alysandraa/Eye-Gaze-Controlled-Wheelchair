@@ -39,9 +39,9 @@ def find_eyes(cascade, gray, frame):
 
 def find_pupils(img, gray, threshold, detector):
     _, img = cv2.threshold(gray, threshold, 255, cv2.THRESH_BINARY)
-    img = cv2.erode(img, None, iterations=2)                           #idea is exactly like soil erosion. erodes away boundaries of foreground object
-    img = cv2.dilate(img, None, iterations=4)                                   #commonly used with erosion (for noise removal in images) because erode also shrinks the object so this makes it larger again 
-    img = cv2.medianBlur(img, 5)                                                 #takes the median values of each pixel and replaces the central element with this value
+    img = cv2.erode(img, None, iterations=2)#idea is exactly like soil erosion. erodes away boundaries of foreground object
+    img = cv2.dilate(img, None, iterations=4)#commonly used with erosion (for noise removal in images) because erode also shrinks the object so this makes it larger again 
+    img = cv2.medianBlur(img, 5)#takes the median values of each pixel and replaces the central element with this value
     keypoints = detector.detect(img)
     return keypoints
     
